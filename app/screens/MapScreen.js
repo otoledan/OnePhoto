@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
 const ImageHeader = props => (
   <View>
       <View style={{
-          paddingTop: 22,
+          paddingTop: 28,
           paddingHorizontal: 15,
           paddingBottom: 4,
           flexDirection: 'row',
@@ -13,13 +13,13 @@ const ImageHeader = props => (
           backgroundColor: '#fff'
       }}>
           <TouchableOpacity style={{zIndex: 3}}>
-              <Image style={{height: 30, width: 30}} source={require('../src/calendar-alt.png')}  />
+            <Image style={{height: 38, width: 38}} source={require('../src/settings.png')}  />
           </TouchableOpacity>
           <Image
               style={{height: 40, width: 130}} source={require('../src/1Photo_Words.png')}
           />
           <TouchableOpacity >
-              <Image style={{height: 30, width: 30}} source={require('../src/images.png')}  />
+              <Image style={{height: 38, width: 38}} source={require('../src/images.png')}  />
           </TouchableOpacity>
       </View>
   </View>

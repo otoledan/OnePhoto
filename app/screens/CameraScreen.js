@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
 const ImageHeader = props => (
   <View>
       <View style={{
-          paddingTop: 22,
+          paddingTop: 28,
           paddingHorizontal: 15,
           paddingBottom: 4,
           flexDirection: 'row',

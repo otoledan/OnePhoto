@@ -7,29 +7,6 @@ import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import CameraScreen from '../screens/CameraScreen';
 
-const ImageHeader = props => (
-    <View>
-        <View style={{
-            paddingTop: 22,
-            paddingHorizontal: 15,
-            paddingBottom: 4,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            backgroundColor: '#fff'
-        }}>
-            <TouchableOpacity style={{zIndex: 3}}>
-                <Image style={{height: 30, width: 30}} source={require('../src/calendar-alt.png')}  />
-            </TouchableOpacity>
-            <Image
-                style={{height: 40, width: 130}} source={require('../src/1Photo_Words.png')}
-            />
-            <TouchableOpacity >
-                <Image style={{height: 35, width: 30}} source={require('../src/images.png')}  />
-            </TouchableOpacity>
-        </View>
-    </View>
-);
-
 const Tabs = TabNavigator({
 	Home: {
         screen: HomeScreen,
@@ -70,6 +47,11 @@ const Tabs = TabNavigator({
         swipeEnabled: true,
         tabBarOptions: {
         inactiveTintColor: 'grey',
+        activeTintColor: 'blue',
+        showIcon: true,
+        style: {
+            backgroundColor: 'white'
+        },
         tabBarOptions: {
             labelStyle: {
               fontSize: 12,
