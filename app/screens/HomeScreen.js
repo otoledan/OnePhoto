@@ -43,7 +43,6 @@ class HomeScreen extends Component {
   constructor(props){
     super(props)
     this.state = {
-      date: '2016-05-15',
       realm: null
     }
     self = this;
@@ -74,11 +73,35 @@ class HomeScreen extends Component {
   }
 
   componentWillMount() {
-    
+    realm.write(() => {    
+    realm.delete(realm.objects('Photo'));
 
-    this.setState({
-      realm,
-    });
+      realm.create('Photo', {
+        date:     '2017-05-12',
+        picture:  'https://image.freepik.com/free-photo/outdoors-green-freshness-deciduous-foliage-nature_1417-468.jpg',
+        star:     false,
+        albums:   [],
+        location: [37.78820, -122.4320],
+      });
+      realm.create('Photo', {
+        date:     '2017-05-11',
+        picture:  'https://www.istockphoto.com/resources/images/PhotoFTLP/img_82250973.jpg',
+        star:     false,
+        albums:   [],
+        location: [37.78825, -122.4325],
+      });
+      realm.create('Photo', {
+        date:     '2017-05-10',
+        picture:  'https://wtop.com/wp-content/uploads/2017/08/ThinkstockPhotos-470112710.jpg',
+        star:     false,
+        albums:   [],
+        location: [37.78830, -122.433],
+      });
+      
+      this.setState({
+        realm,
+      });
+    })
   }
 
   convertDate(date) {
