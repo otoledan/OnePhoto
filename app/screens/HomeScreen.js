@@ -4,7 +4,7 @@ import { Header, StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
 import Share, {ShareSheet, Button} from 'react-native-share';
 import Realm from 'realm';
 
-import {photos, PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
+import {PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
 
 
 let realm = new Realm({
@@ -44,7 +44,6 @@ class HomeScreen extends Component {
     super(props)
     this.state = {
       date: '2016-05-15',
-      data: null,
       realm: null
     }
     self = this;
@@ -79,7 +78,6 @@ class HomeScreen extends Component {
 
     this.setState({
       realm,
-      data: photos
     });
   }
 
