@@ -155,11 +155,11 @@ class HomeScreen extends Component {
 
   isStar(star) {
     if (star) {
-      return <Image style={{width: 30, height: 30}} source={require('../src/star.png')} />
+      return <Image style={{width: 31, height: 31, padding: 10}} source={require('../src/star.png')} />
     }
 
     else {
-      return <Image style={{width: 30, height: 30}} source={require('../src/star_empty.png')} />
+      return <Image style={{width: 31, height: 31, padding: 10}} source={require('../src/star_empty.png')} />
     }
   }
 
@@ -174,11 +174,11 @@ class HomeScreen extends Component {
 
   renderShareButton() {
     if (Platform.OS == 'ios') {
-      return <Image style={{width: 30, height: 30}} source={require('../src/share-iphone.png')} />
+      return <Image style={{width: 30, height: 30, padding: 10}} source={require('../src/share-iphone.png')} />
     }
 
     else {
-      return <Image style={{width: 30, height: 30}} source={require('../src/share-android.png')} />
+      return <Image style={{width: 30, height: 30, padding: 10}} source={require('../src/share-android.png')} />
     }
   }
   
