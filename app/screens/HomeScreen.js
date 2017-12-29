@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { Alert, StatusBar, TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform } from 'react-native';
 import { Header, StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
-import DatePicker from 'react-native-datepicker'
 import Share, {ShareSheet, Button} from 'react-native-share';
+import Realm from 'realm';
 
-import {photos} from '../config/data'
+import {photos, PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
+
+
+let realm = new Realm({
+  schema: [PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema]
+})
+
+
 
 var self = null;
 var {width} = Dimensions.get('window');
@@ -38,15 +45,42 @@ class HomeScreen extends Component {
     this.state = {
       date: '2016-05-15',
       data: null,
-      size: 3
+      realm: null
     }
     self = this;
   }
 
-  componentWillMount() {
+  starToggle(day) {
+    let photos = realm.objects('Photo');
+    let singlePhoto = photos.filtered('date = $0', day);
+    realm.write(() => {
+      singlePhoto[0].star = !singlePhoto[0].star;
+    });
+
     this.setState({
-      data : photos
+      realm
     })
+  }
+
+  removeDogs() {
+    let dogs = realm.objects('Dog');
+    let rexDogs = dogs.filtered('name = "Rex"');
+    realm.write(() => {
+      realm.delete(rexDogs);
+    });
+
+    this.setState({
+      realm,
+    })
+  }
+
+  componentWillMount() {
+    
+
+    this.setState({
+      realm,
+      data: photos
+    });
   }
 
   convertDate(date) {
@@ -133,24 +167,33 @@ class HomeScreen extends Component {
   });
   
   render() {
+    const info = this.state.realm
+      ? 'Number of dogs in this Realm: ' + this.state.realm.objects('Dog').length
+      : 'Loading...';
+
+
     return (
         <View style={{ flex: 1, alignItems: 'center'}}>
          <StatusBar
           translucent={true}
         />
+        <Text>{info}</Text>
+        <TouchableOpacity onPress={this.removeDogs.bind(this)}>
+          <Text> Remove </Text>
+        </TouchableOpacity>
         <FlatList
-          keyExtractor={item => item.Date1}
+          keyExtractor={item => item.date}
           numColumns={1}
-          data={this.state.data}
+          data={this.state.realm.objects('Photo')}
           renderItem={({item}) =>
           <View>
-            <Text style={{color: 'black', backgroundColor:'transparent', fontSize: 25}} > {this.convertDate(item.Date1)} </Text> 
-            <Image style={{width: width, height: width}} source={{uri: item.Picture}} />
+            <Text style={{color: 'black', backgroundColor:'transparent', fontSize: 25}} > {this.convertDate(item.date)} </Text> 
+            <Image style={{width: width, height: width}} source={{uri: item.picture}} />
             <View style={{height: 40, flexDirection: 'row', paddingTop: 5, paddingHorizontal: 5, paddingBottom: 5}}>
-            <TouchableOpacity onPress={() => this.sharePhoto(item.Picture)}>  
-              {this.isStar(item.Star)}
+            <TouchableOpacity onPress={() => this.starToggle(item.date)}>  
+              {this.isStar(item.star)}
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.sharePhoto(item.Picture)}>
+            <TouchableOpacity onPress={() => this.sharePhoto(item.picture)}>
               {this.renderShareButton()}
             </TouchableOpacity>
             </View>
