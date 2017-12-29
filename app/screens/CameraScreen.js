@@ -44,7 +44,6 @@ class CameraScreen extends Component {
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Camera Screen</Text>
         <Camera
           ref={(cam) => {
             this.camera = cam;
@@ -66,7 +65,9 @@ container: {
 preview: {
   flex: 1,
   justifyContent: 'flex-end',
-  alignItems: 'center'
+  alignItems: 'center',
+  width: 300,
+  height: 300
 },
 capture: {
   flex: 0,

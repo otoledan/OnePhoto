@@ -12,6 +12,8 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.airbnb.android.react.maps.MapsPackage;
+import io.realm.react.RealmReactPackage; // add this import
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RCTCameraPackage(),
             new VectorIconsPackage(),
             new RNSharePackage(),
-	    new MapsPackage()
+	    new MapsPackage(),
+	    new RealmReactPackage()
       );
     }
 
