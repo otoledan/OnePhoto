@@ -7,10 +7,13 @@ import Realm from 'realm';
 import PreviewScreen from './PreviewScreen'
 
 
-import {PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
+import {PhotoSchema, AlbumSchema, UserPrefSchema} from '../config/data'
+
+var RNFS = require('react-native-fs');
+
 
 let realm = new Realm({
-  schema: [PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema]
+  schema: [PhotoSchema, AlbumSchema, UserPrefSchema]
 })
 
 
@@ -127,12 +130,25 @@ class HomeScreen extends Component {
   }
 
   sharePhoto(url) {
-    Share.open({
-      title: "React Native",
-      message: "Hola mundo",
-      url: url,
-      subject: "Share Link" //  for email
+    RNFS.readFile(url, 'base64')
+      .then((success) => {
+      console.log('FILE Read!');
+
+      console.log(success);
+      
+      Share.open({
+        title: "React Native",
+        message: "Hola mundo",
+        url:  "data:image/png;base64,".concat(success),
+        subject: "Share Link" //  for email
+      });
+      
+    })
+      .catch((err) => {
+      console.log(err.message);
     });
+
+    
   }
 
   renderShareButton() {

@@ -35,7 +35,7 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new RNSharePackage(),
 	    new MapsPackage(),
-	    new RealmReactPackage(),
+	    new RealmReactPackage()
       );
     }
 

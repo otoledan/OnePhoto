@@ -73,6 +73,9 @@ const Root = StackNavigator({
     }, 
     Preview: {
         screen: PreviewScreen,
+        navigationOptions: {
+            header: null,
+        }
     }
 },{
     navigationOptions: {

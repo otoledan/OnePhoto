@@ -5,12 +5,12 @@ import MapView from 'react-native-maps';
 import Realm from 'realm';
 
 
-import {PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
+import {PhotoSchema, AlbumSchema, UserPrefSchema} from '../config/data'
 
 console.disableYellowBox = true;
 
 let realm = new Realm({
-  schema: [PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema]
+  schema: [PhotoSchema, AlbumSchema, UserPrefSchema]
 })
 
 

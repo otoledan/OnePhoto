@@ -23,10 +23,3 @@ export const UserPrefSchema = {
           reminderTime:     'string',
       }
 };
-
-export const DogSchema = {
-        name: 'Dog', 
-        properties: {
-            name: 'string'
-        }
-};
