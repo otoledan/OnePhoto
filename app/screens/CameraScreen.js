@@ -36,7 +36,13 @@ class CameraScreen extends Component {
   }
   
   takePicture() {
-    const options = {};
+    const options = {
+      aspect: 'fit',
+      playSoundOnCapture: false,
+    };
+
+    this.camera.aspect = 'fit';
+    this.camera.playSoundOnCapture = 'false'
     //options.location = ...
     
     this.camera.capture({metadata: options})
