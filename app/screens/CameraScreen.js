@@ -9,7 +9,7 @@ import PreviewScreen from './PreviewScreen'
 const ImageHeader = props => (
   <View>
       <View style={{
-          paddingTop: Platform.OS === 'ios' ? 28 : 10,
+          paddingTop: Platform.OS === 'ios' ? (Dimensions.get('screen').height == 812 ? 35 : 28) : 10,
           paddingHorizontal: 15,
           paddingBottom: 4,
           flexDirection: 'row',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, StatusBar, TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform } from 'react-native';
+import { SafeAreaView, Alert, StatusBar, TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform } from 'react-native';
 import { Header, StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
 import Share, {ShareSheet, Button} from 'react-native-share';
 import Realm from 'realm';
@@ -19,9 +19,8 @@ var self = null;
 var {width} = Dimensions.get('window');
 
 var ImageHeader = props => (
-  <View>
       <View style={{
-          paddingTop: Platform.OS === 'ios' ? 28 : 10,
+          paddingTop: Platform.OS === 'ios' ? (Dimensions.get('screen').height == 812 ? 35 : 28) : 10,
           paddingHorizontal: 15,
           paddingBottom: 4,
           flexDirection: 'row',
@@ -38,7 +37,6 @@ var ImageHeader = props => (
               <Image style={{height: 38, width: 38}} source={require('../src/images.png')}  />
           </TouchableOpacity>
       </View>
-  </View>
 );
 
 class HomeScreen extends Component {
