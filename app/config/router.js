@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import CameraScreen from '../screens/CameraScreen';
+import PreviewScreen from '../screens/PreviewScreen';
 
 const Tabs = TabNavigator({
 	Home: {
@@ -70,6 +71,9 @@ const Root = StackNavigator({
     Tabs: {
         screen: Tabs,
     }, 
+    Preview: {
+        screen: PreviewScreen,
+    }
 },{
     navigationOptions: {
     }

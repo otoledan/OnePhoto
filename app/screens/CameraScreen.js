@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Image, View, Text, Button } from 'react-native';
+import { Platform, Dimensions, StyleSheet, TouchableOpacity, Image, View, Text, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
 import Camera from 'react-native-camera';
+
+import PreviewScreen from './PreviewScreen'
 
 
 const ImageHeader = props => (
   <View>
       <View style={{
-          paddingTop: 28,
+          paddingTop: Platform.OS === 'ios' ? 28 : 10,
           paddingHorizontal: 15,
           paddingBottom: 4,
           flexDirection: 'row',
@@ -36,22 +38,27 @@ class CameraScreen extends Component {
   takePicture() {
     const options = {};
     //options.location = ...
+    
     this.camera.capture({metadata: options})
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
+      .then((data) => this.props.navigation.navigate('Preview', {picture: data.path}))
+      .catch(err => console.error(err))
+
   }
   
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Camera
+        <Camera style={{height: 100}}
+          playSoundOnCapture={false}
           ref={(cam) => {
             this.camera = cam;
           }}
 	        onBarCodeRead={this.onBarCodeRead.bind(this)}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+          <TouchableOpacity onPress={this.takePicture.bind(this)}>
+            <Image style={styles.capture}  source={require('../src/camera.png')}/>
+          </TouchableOpacity>
         </Camera>
       </View>
     )}
@@ -63,19 +70,23 @@ container: {
   flexDirection: 'row',
 },
 preview: {
-  flex: 1,
   justifyContent: 'flex-end',
   alignItems: 'center',
-  width: 300,
-  height: 300
+  width: Dimensions.get('screen').width - 50,
+  height: Dimensions.get('screen').width - 50,
+  borderRadius: 20
 },
 capture: {
+  zIndex: 1,
   flex: 0,
-  backgroundColor: '#fff',
+  height: 50,
+  width: 50,
+  backgroundColor: 'transparent',
+  tintColor: '#fff',
   borderRadius: 5,
   color: '#000',
   padding: 10,
-  margin: 40
+  margin: 10
 }
 });
 

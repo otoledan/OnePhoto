@@ -4,6 +4,8 @@ import android.app.Application;
 
 import cl.json.RNSharePackage;
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
+import io.realm.react.RealmReactPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import cl.json.RNSharePackage;
@@ -11,9 +13,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.airbnb.android.react.maps.MapsPackage;
-import io.realm.react.RealmReactPackage; // add this import
-
+import com.airbnb.android.react.maps.MapsPackage; // add this import
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,11 +30,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
             new RCTCameraPackage(),
             new VectorIconsPackage(),
             new RNSharePackage(),
 	    new MapsPackage(),
-	    new RealmReactPackage()
+	    new RealmReactPackage(),
       );
     }
 

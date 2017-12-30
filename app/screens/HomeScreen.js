@@ -4,8 +4,10 @@ import { Header, StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
 import Share, {ShareSheet, Button} from 'react-native-share';
 import Realm from 'realm';
 
-import {PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
+import PreviewScreen from './PreviewScreen'
 
+
+import {PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
 
 let realm = new Realm({
   schema: [PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema]
@@ -19,14 +21,14 @@ var {width} = Dimensions.get('window');
 var ImageHeader = props => (
   <View>
       <View style={{
-          paddingTop: 28,
+          paddingTop: Platform.OS === 'ios' ? 28 : 10,
           paddingHorizontal: 15,
           paddingBottom: 4,
           flexDirection: 'row',
           justifyContent: 'space-between',
           backgroundColor: '#fff'
       }}>
-          <TouchableOpacity onPress={() => console.log('ok')}>
+          <TouchableOpacity onPress={() => alert('settings')}>
             <Image style={{height: 38, width: 38}} source={require('../src/settings.png')}  />
           </TouchableOpacity>
           <Image
@@ -60,48 +62,11 @@ class HomeScreen extends Component {
     })
   }
 
-  removeDogs() {
-    let dogs = realm.objects('Dog');
-    let rexDogs = dogs.filtered('name = "Rex"');
-    realm.write(() => {
-      realm.delete(rexDogs);
-    });
-
-    this.setState({
-      realm,
-    })
-  }
-
   componentWillMount() {
-    realm.write(() => {    
-    realm.delete(realm.objects('Photo'));
-
-      realm.create('Photo', {
-        date:     '2017-05-12',
-        picture:  'https://image.freepik.com/free-photo/outdoors-green-freshness-deciduous-foliage-nature_1417-468.jpg',
-        star:     false,
-        albums:   [],
-        location: [37.78820, -122.4320],
-      });
-      realm.create('Photo', {
-        date:     '2017-05-11',
-        picture:  'https://www.istockphoto.com/resources/images/PhotoFTLP/img_82250973.jpg',
-        star:     false,
-        albums:   [],
-        location: [37.78825, -122.4325],
-      });
-      realm.create('Photo', {
-        date:     '2017-05-10',
-        picture:  'https://wtop.com/wp-content/uploads/2017/08/ThinkstockPhotos-470112710.jpg',
-        star:     false,
-        albums:   [],
-        location: [37.78830, -122.433],
-      });
       
       this.setState({
         realm,
       });
-    })
   }
 
   convertDate(date) {
@@ -188,20 +153,8 @@ class HomeScreen extends Component {
   });
   
   render() {
-    const info = this.state.realm
-      ? 'Number of dogs in this Realm: ' + this.state.realm.objects('Dog').length
-      : 'Loading...';
-
-
     return (
         <View style={{ flex: 1, alignItems: 'center'}}>
-         <StatusBar
-          translucent={true}
-        />
-        <Text>{info}</Text>
-        <TouchableOpacity onPress={this.removeDogs.bind(this)}>
-          <Text> Remove </Text>
-        </TouchableOpacity>
         <FlatList
           keyExtractor={item => item.date}
           numColumns={1}

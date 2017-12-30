@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image, View, Text, Button, Dimensions } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image, View, Text, Button, Dimensions } from 'react-native';
 import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
 import MapView from 'react-native-maps';
+import Realm from 'realm';
+
 
 import {PhotoSchema, AlbumSchema, DogSchema, UserPrefSchema} from '../config/data'
 
@@ -15,7 +17,7 @@ let realm = new Realm({
 const ImageHeader = props => (
   <View>
       <View style={{
-          paddingTop: 28,
+          paddingTop: Platform.OS === 'ios' ? 28 : 10,
           paddingHorizontal: 15,
           paddingBottom: 4,
           flexDirection: 'row',

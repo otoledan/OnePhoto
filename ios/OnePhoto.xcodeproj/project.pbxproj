@@ -64,9 +64,9 @@
 		DE11B093AA4D4826AF1BCB38 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87283F33220B43009B4D27E8 /* Entypo.ttf */; };
 		F2EC2616570C409590BDE4F7 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DB118885AED4D04A669C275 /* Zocial.ttf */; };
 		FFEABEA7AD2D4821B0436EB5 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6B150B1FC6C434087CD09DC /* MaterialIcons.ttf */; };
-		09F0A21103BB4662B22E9404 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D232751D45044B5B6FF6B0A /* libRealmReact.a */; };
-		E531D243745D4868AF31E3CE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9435820C4AF24634905339EE /* libc++.tbd */; };
-		3F05BB35516241129F8F30F1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3701D28DDE484E1AADAF352C /* libz.tbd */; };
+		88C1E9ECA03A43798D4F4858 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FC5BFB1D245278E2952CF /* libRealmReact.a */; };
+		8E102FB45B374CACB6C3A19A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D84B28354C74A2DBB7E011A /* libc++.tbd */; };
+		5BD6987A1DE1406C82C866F4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E8387862AA4CCA856D9B28 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,10 +328,10 @@
 		F0368E1A22AD45CAA6587C43 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		F6B150B1FC6C434087CD09DC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		F9A8A91766CC41E98920B971 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		ADF2AFA0B39145E4943F8BAC /* RealmReact.xcodeproj */ = {isa = PBXFileReference; name = "RealmReact.xcodeproj"; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		5D232751D45044B5B6FF6B0A /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		9435820C4AF24634905339EE /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
-		3701D28DDE484E1AADAF352C /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		85534CE421874C03A30420D4 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; name = "RealmReact.xcodeproj"; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		841FC5BFB1D245278E2952CF /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		5D84B28354C74A2DBB7E011A /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		79E8387862AA4CCA856D9B28 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,9 +365,9 @@
 				D50097EFF9AC473BA167D5A8 /* libRNShare.a in Frameworks */,
 				12EA4F0A718D43FEAC5A690F /* libRCTCamera.a in Frameworks */,
 				C1B9E7AFDDC9B31D510FB30C /* libPods-OnePhoto.a in Frameworks */,
-				09F0A21103BB4662B22E9404 /* libRealmReact.a in Frameworks */,
-				E531D243745D4868AF31E3CE /* libc++.tbd in Frameworks */,
-				3F05BB35516241129F8F30F1 /* libz.tbd in Frameworks */,
+				88C1E9ECA03A43798D4F4858 /* libRealmReact.a in Frameworks */,
+				8E102FB45B374CACB6C3A19A /* libc++.tbd in Frameworks */,
+				5BD6987A1DE1406C82C866F4 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +540,7 @@
 				9027BE9260C04A6B908FFC3F /* RNVectorIcons.xcodeproj */,
 				D0B495B416684A41AFDA2023 /* RNShare.xcodeproj */,
 				E326B480B0D64A6F8F658473 /* RCTCamera.xcodeproj */,
-				ADF2AFA0B39145E4943F8BAC /* RealmReact.xcodeproj */,
+				85534CE421874C03A30420D4 /* RealmReact.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -602,8 +602,8 @@
 			isa = PBXGroup;
 			children = (
 				52F7C17771942580D0FAFB0E /* libPods-OnePhoto.a */,
-				9435820C4AF24634905339EE /* libc++.tbd */,
-				3701D28DDE484E1AADAF352C /* libz.tbd */,
+				5D84B28354C74A2DBB7E011A /* libc++.tbd */,
+				79E8387862AA4CCA856D9B28 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1221,10 +1221,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1253,10 +1249,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1346,10 +1338,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1388,10 +1376,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1421,10 +1405,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.OnePhoto-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1449,10 +1429,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.OnePhoto-tvOSTests";
