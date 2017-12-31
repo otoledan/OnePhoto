@@ -17,14 +17,11 @@ class PreviewScreen extends Component {
         super(props)
         this.state = {
           photos: null,
-          realm: null
+          realm: null,
         }
       }
 
-    retakePhoto() {
-        alert('retake')
-
-        
+    retakePhoto() {        
         let path;
         try {
             path = this.props.navigation.state.params.picture;
@@ -43,31 +40,77 @@ class PreviewScreen extends Component {
     }
 
     keepPhoto() {
-        alert('keep')
+        var current = new Date();
+        var currentDay = new Date()
 
         
+        currentDay.setHours(0,0,0,0);
+
+        let photos = realm.objects('Photo');
+        let singlePhoto = photos.filtered('date = $0', currentDay);
+        alert(singlePhoto)
+
         let path;
         try {
             path = this.props.navigation.state.params.picture;
         } catch (err) {}
 
-        realm.write(() => {
-            realm.create('Photo', {
-                date:       '2017-12-29',
-                picture:    path,
-                star:       false,
-                albums:     [AlbumSchema],
-                location:   [37.7749, 122.4194],
-            });
-        });
+        if (typeof singlePhoto[0] === "undefined") {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    realm.write(() => {
+                        realm.create('Photo', {
+                            date:       currentDay,
+                            picture:    path,
+                            star:       false,
+                            albums:     [AlbumSchema],
+                            location:   [parseFloat(position.coords.latitude),parseFloat(position.coords.longitude)]
+                        })
+                    });
+    
+                    this.setState({
+                        realm
+                    });
+                    
+                    this.props.navigation.goBack();
+                },
+                (error) => console.log(error),
+                { enableHighAccuracy: false, timeout: 20000, maximumAge: 300000 },
+            )
+        }
 
-        this.setState({
-            realm
-        })
+        else {
+            let oldpath = singlePhoto[0].picture;
 
-        this.props.navigation.goBack();
+            RNFS.unlink(oldpath)
+            .then(() => {
+            console.log('FILE DELETED');
+            })
+            // `unlink` will throw an error, if the item to unlink does not exist
+            .then(() => {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        realm.write(() => {
+                            singlePhoto[0].picture = path;
+                            singlePhoto[0].location = [parseFloat(position.coords.latitude),parseFloat(position.coords.longitude)];
+                        });
         
+                        this.setState({
+                            realm
+                        });
+                        
+                        this.props.navigation.goBack();
+                    },
+                    (error) => console.log(error),
+                    { enableHighAccuracy: false, timeout: 20000, maximumAge: 300000 },
+                )
+            }) 
+            .catch((err) => {
+                console.log(err.message);
+            }); 
+        }
     }
+        
   
   render() {
     let picture;

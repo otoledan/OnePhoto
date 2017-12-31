@@ -1,7 +1,7 @@
 export const PhotoSchema = {
     name: 'Photo',
     properties: {
-      date:     'string',
+      date:     'date',
       picture:  'string',
       star:     'bool',
       albums:   'Album[]',

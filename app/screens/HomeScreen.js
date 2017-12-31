@@ -17,7 +17,6 @@ let realm = new Realm({
 })
 
 
-
 var self = null;
 var {width} = Dimensions.get('window');
 
@@ -46,7 +45,10 @@ class HomeScreen extends Component {
   constructor(props){
     super(props)
     this.state = {
-      realm: null
+      realm: null,
+      latitude: null,
+      longitude: null,
+      error: null
     }
     self = this;
   }
@@ -63,19 +65,30 @@ class HomeScreen extends Component {
     })
   }
 
-  componentWillMount() {
-      
+  componentWillMount() {      
       this.setState({
         realm,
       });
   }
 
-  convertDate(date) {
-    var month = date.substring(5,7);
-    var day = date.substring(8,10);
-    var year = date.substring(0,4);
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 300000 },
+    );
+  }
 
-    month = Number.parseInt(month);
+  convertDate(date) {
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var year = date.getFullYear();
 
     switch(month) {
       case 1: 
@@ -172,7 +185,7 @@ class HomeScreen extends Component {
         <FlatList
           keyExtractor={item => item.date}
           numColumns={1}
-          data={this.state.realm.objects('Photo')}
+          data={this.state.realm.objects('Photo').sorted('date', true)}
           renderItem={({item}) =>
           <View>
             <Text style={{color: 'black', backgroundColor:'transparent', fontSize: 25}} > {this.convertDate(item.date)} </Text> 

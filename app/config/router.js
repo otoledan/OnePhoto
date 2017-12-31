@@ -46,6 +46,7 @@ const Tabs = TabNavigator({
         tabBarPosition: 'bottom',
         animationEnabled: true,
         swipeEnabled: true,
+        lazy: true,
         tabBarOptions: {
         inactiveTintColor: 'grey',
         activeTintColor: 'blue',

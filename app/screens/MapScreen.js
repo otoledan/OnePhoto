@@ -75,52 +75,50 @@ class MapScreen extends Component {
     }
 
     convertDate(date) {
-        var month = date.substring(5,7);
-        var day = date.substring(8,10);
-        var year = date.substring(0,4);
-    
-        month = Number.parseInt(month);
-    
-        switch(month) {
-          case 1: 
-            month = 'January'
-            break;
-          case 2: 
-            month = 'Febuary'
-            break;
-          case 3: 
-            month = 'March'
-            break;
-          case 4: 
-            month = 'April'
-            break;
-          case 5: 
-            month = 'May'
-            break;
-          case 6: 
-            month = 'June'
-            break;
-          case 7: 
-            month = 'July'
-            break;
-          case 8: 
-            month = 'August'
-            break;
-          case 9: 
-            month = 'September'
-            break;
-          case 10: 
-            month = 'October'
-            break;
-          case 11: 
-            month = 'November'
-            break;
-          case 12: 
-            month = 'December'
-            break;
-        }
-
-        return month + ' ' + day + ', ' + year;
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var year = date.getFullYear();
+  
+      switch(month) {
+        case 1: 
+          month = 'January'
+          break;
+        case 2: 
+          month = 'Febuary'
+          break;
+        case 3: 
+          month = 'March'
+          break;
+        case 4: 
+          month = 'April'
+          break;
+        case 5: 
+          month = 'May'
+          break;
+        case 6: 
+          month = 'June'
+          break;
+        case 7: 
+          month = 'July'
+          break;
+        case 8: 
+          month = 'August'
+          break;
+        case 9: 
+          month = 'September'
+          break;
+        case 10: 
+          month = 'October'
+          break;
+        case 11: 
+          month = 'November'
+          break;
+        case 12: 
+          month = 'December'
+          break;
+      }
+  
+      return month + ' ' + day + ', ' + year;
     }
     
   render() {
@@ -132,7 +130,7 @@ class MapScreen extends Component {
                         </View>
                         <TouchableWithoutFeedback style={{zIndex:2}}>
                             <View>
-                                <Text style={{fontSize: 35, fontWeight: 'bold', padding: 15, backgroundColor: 'transparent', color: 'white'}}> {this.convertDate(this.state.day)} </Text>
+                                <Text style={{fontSize: 28, fontWeight: 'bold', padding: 15, backgroundColor: 'transparent', color: 'white'}}> {this.convertDate(this.state.day)} </Text>
                             </View>
                         </TouchableWithoutFeedback>
                         <TouchableWithoutFeedback style={{zIndex: 2}}>
