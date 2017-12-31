@@ -148,9 +148,9 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-camera')
     compile project(':react-native-fs')
     compile project(':realm')
-    compile project(':react-native-camera')
     compile project(':react-native-maps')
     compile project(':react-native-share')
     compile fileTree(dir: "libs", include: ["*.jar"])

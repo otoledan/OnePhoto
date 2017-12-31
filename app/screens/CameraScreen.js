@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import { Platform, Dimensions, StyleSheet, TouchableOpacity, Image, View, Text } from 'react-native';
+import { Platform, Dimensions, StyleSheet, TouchableOpacity, Image, View, Text, Vibration } from 'react-native';
 import Camera from 'react-native-camera';
 
 const ImageHeader = props => (
@@ -25,11 +25,51 @@ class CameraScreen extends Component {
     header: (props) => <ImageHeader {...props} />,
   });
 
-  onBarCodeRead(e) {
-    console.log(
-        "Barcode Found!",
-        "Type: " + e.type + "\nData: " + e.data
-    );
+  constructor(props){
+    super(props)
+    this.state = {
+      flash: false,
+      flashConstant: 'Camera.constants.FlashMode.off',
+      frontFacing: false,
+      frontFacingConstant: 'back'
+    }
+    self = this;
+
+    this.swapCameras = this.swapCameras.bind(this);
+    this.takePicture = this.takePicture.bind(this);
+
+  }
+
+  flash() {
+    if (this.state.flash) {
+      this.setState({
+        frontFacingConstant: 'Camera.constants.FlashMode.off',
+        frontFacing: false
+      })
+    }
+
+    else {
+      this.setState({
+        frontFacingConstant: 'Camera.constants.FlashMode.on',
+        frontFacing: true
+      })
+    }
+  }
+
+  swapCameras() {
+    if (this.state.frontFacing) {
+      this.setState({
+        frontFacingConstant: 'back',
+        frontFacing: false
+      })
+    }
+
+    else {
+      this.setState({
+        frontFacingConstant: 'front',
+        frontFacing: true
+      })
+    }
   }
   
   takePicture() {
@@ -56,12 +96,26 @@ class CameraScreen extends Component {
           ref={(cam) => {
             this.camera = cam;
           }}
-	        onBarCodeRead={this.onBarCodeRead.bind(this)}
+          type={this.state.frontFacingConstant}
+          fixOrientation={false}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <TouchableOpacity onPress={this.takePicture.bind(this)}>
-            <Image style={styles.capture}  source={require('../src/camera.png')}/>
-          </TouchableOpacity>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              <View style={{flex: 1, flexDirection: 'column', alignItems: 'flex-end', padding: 5, marginHorizontal: 5}}>
+                <TouchableOpacity onPress={this.swapCameras}>
+                  <Image style={styles.swap}  source={require('../src/swap_cameras.png')}/>
+                </TouchableOpacity>
+              </View>
+              <View style={{flex: 1, alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'center'}}>
+              <TouchableOpacity onPress={this.takePicture}>
+                <Image style={styles.capture}  source={require('../src/camera.png')}/>
+              </TouchableOpacity>
+            </View>
+            </View>
+
+            
+          </View>
         </Camera>
       </View>
     )}
@@ -77,19 +131,36 @@ preview: {
   alignItems: 'center',
   width: Dimensions.get('screen').width - 50,
   height: Dimensions.get('screen').width - 50,
-  borderRadius: 20
 },
 capture: {
-  zIndex: 1,
   flex: 0,
+  zIndex: 1,
   height: 50,
   width: 50,
   backgroundColor: 'transparent',
   tintColor: '#fff',
   borderRadius: 5,
-  color: '#000',
   padding: 10,
   margin: 10
+},
+flash: {
+  zIndex: 1,
+  flex: 0,
+  height: 30,
+  width: 30,
+  backgroundColor: 'transparent',
+  tintColor: '#fff',
+  margin: 5
+},
+swap: {
+  zIndex: 1,
+  flex: 0,
+  height: 45,
+  width: 45,
+  backgroundColor: 'transparent',
+  tintColor: '#fff',
+  paddingBottom: 5,
+  paddingHorizontal: 5
 }
 });
 

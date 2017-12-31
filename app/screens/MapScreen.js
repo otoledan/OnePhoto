@@ -44,6 +44,9 @@ class MapScreen extends Component {
           image: null,
           day: null
         }
+
+        this.convertDate = this.convertDate(this.convertDate(this.state.day));
+        this.closePhoto = () => this.closePhoto();
     }
     
   static navigationOptions = ({ navigation, screenProps }) => ({
@@ -122,13 +125,13 @@ class MapScreen extends Component {
   render() {
       return (
                 <View style={styles.container}>
-                {this.state.showImage && <TouchableWithoutFeedback onPress={() => this.closePhoto()}>
+                {this.state.showImage && <TouchableWithoutFeedback onPress={this.closePhoto}>
                     <View style={{position: 'absolute', top: 0, bottom : 0, left: 0, right: 0, zIndex: 1, flex:1, justifyContent: 'center', alignItems: 'center',}}>
                         <View style={{opacity: 0.8, backgroundColor: 'black', height:Dimensions.get('window').height, width:Dimensions.get('window').width, position:'absolute', top:0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',}}>
                         </View>
                         <TouchableWithoutFeedback style={{zIndex:2}}>
                             <View>
-                                <Text style={{fontSize: 28, fontWeight: 'bold', padding: 15, backgroundColor: 'transparent', color: 'white'}}> {this.convertDate(this.state.day)} </Text>
+                                <Text style={{fontSize: 28, fontWeight: 'bold', padding: 15, backgroundColor: 'transparent', color: 'white'}}> {this.convertDate} </Text>
                             </View>
                         </TouchableWithoutFeedback>
                         <TouchableWithoutFeedback style={{zIndex: 2}}>

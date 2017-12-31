@@ -47,6 +47,9 @@ class HomeScreen extends Component {
       error: null
     }
     self = this;
+
+    this.starToggle = () => this.starToggle(item.date);
+    this.sharePhoto = () => this.sharePhoto(item.picture);
   }
 
   starToggle(day) {
@@ -187,10 +190,10 @@ class HomeScreen extends Component {
             <Text style={{color: 'black', backgroundColor:'transparent', fontSize: 25}} > {this.convertDate(item.date)} </Text> 
             <Image style={{width: width, height: width}} source={{uri: item.picture}} />
             <View style={{height: 40, flexDirection: 'row', paddingTop: 5, paddingHorizontal: 5, paddingBottom: 5}}>
-            <TouchableOpacity onPress={() => this.starToggle(item.date)}>  
+            <TouchableOpacity onPress={this.starToggle}>  
               {this.isStar(item.star)}
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.sharePhoto(item.picture)}>
+            <TouchableOpacity onPress={this.sharePhoto}>
               {this.renderShareButton()}
             </TouchableOpacity>
             </View>

@@ -16,6 +16,9 @@ class PreviewScreen extends Component {
           photos: null,
           realm: null,
         }
+
+        this.retakePhoto = this.retakePhoto.bind(this);
+        this.keepPhoto = this.keepPhoto.bind(this);
       }
 
     retakePhoto() {        
@@ -121,13 +124,13 @@ class PreviewScreen extends Component {
                     source={{uri: picture}}
                     />
             <View style={{flexDirection: 'row', padding: 20}}>
-            <TouchableOpacity onPress={this.retakePhoto.bind(this)}>
+            <TouchableOpacity onPress={this.retakePhoto}>
                 <Image 
                     style={{height: 100, width:100, tintColor: 'black', margin: 30}}
                     source={require('../src/redo.png')}
                     />
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.keepPhoto.bind(this)}>
+            <TouchableOpacity onPress={this.keepPhoto}>
                 <Image 
                     style={{height: 94, width:94, tintColor: 'black', margin: 30}}
                     source={require('../src/check.png')}

@@ -4,9 +4,9 @@ import android.app.Application;
 
 import cl.json.RNSharePackage;
 import com.facebook.react.ReactApplication;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.rnfs.RNFSPackage;
 import io.realm.react.RealmReactPackage;
-import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import cl.json.RNSharePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -29,8 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNFSPackage(),
             new RCTCameraPackage(),
+            new RNFSPackage(),
             new RNSharePackage(),
 	          new MapsPackage(),
 	          new RealmReactPackage()
