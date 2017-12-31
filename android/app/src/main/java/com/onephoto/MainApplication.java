@@ -7,7 +7,6 @@ import com.facebook.react.ReactApplication;
 import com.rnfs.RNFSPackage;
 import io.realm.react.RealmReactPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
 import cl.json.RNSharePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -32,7 +31,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RNFSPackage(),
             new RCTCameraPackage(),
-            new VectorIconsPackage(),
             new RNSharePackage(),
 	          new MapsPackage(),
 	          new RealmReactPackage()

@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { DatePickerIOS ,TouchableOpacity, TouchableHighlight, StyleSheet, View, Text, Button, Image } from 'react-native';
-import { Header, StackNavigator, TabNavigator } from 'react-navigation'; // 1.0.0-beta.14
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React from 'react';
+import { StyleSheet, Image } from 'react-native';
+import { StackNavigator, TabNavigator } from 'react-navigation'; // 1.0.0-beta.14
 
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
@@ -45,7 +44,7 @@ const Tabs = TabNavigator({
 }, {
         tabBarPosition: 'bottom',
         animationEnabled: true,
-        swipeEnabled: true,
+        swipeEnabled: false,
         lazy: true,
         tabBarOptions: {
         inactiveTintColor: 'grey',

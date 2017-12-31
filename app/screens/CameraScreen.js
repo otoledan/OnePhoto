@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, Dimensions, StyleSheet, TouchableOpacity, Image, View, Text, Button } from 'react-native';
-import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
+import PropTypes from 'prop-types'
+import { Platform, Dimensions, StyleSheet, TouchableOpacity, Image, View, Text } from 'react-native';
 import Camera from 'react-native-camera';
-
-import PreviewScreen from './PreviewScreen'
-
 
 const ImageHeader = props => (
   <View>

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image, View, Text, Button, Dimensions } from 'react-native';
-import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
+import { Platform, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image, View, Text, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import Realm from 'realm';
-
 
 import {PhotoSchema, AlbumSchema, UserPrefSchema} from '../config/data'
 

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Alert, StatusBar, TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform } from 'react-native';
-import { Header, StackNavigator } from 'react-navigation'; // 1.0.0-beta.14
-import Share, {ShareSheet, Button} from 'react-native-share';
+import { TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform } from 'react-native';
+import Share from 'react-native-share';
 import Realm from 'realm';
-
-import PreviewScreen from './PreviewScreen'
-
 
 import {PhotoSchema, AlbumSchema, UserPrefSchema} from '../config/data'
 
