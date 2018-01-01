@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform } from 'react-native';
 import Share from 'react-native-share';
 import Realm from 'realm';
+import { NavigationAction } from 'react-navigation'
 
 import {PhotoSchema, AlbumSchema, UserPrefSchema} from '../config/data'
+
 
 var RNFS = require('react-native-fs');
 
@@ -25,7 +27,7 @@ var ImageHeader = props => (
           justifyContent: 'space-between',
           backgroundColor: '#fff'
       }}>
-          <TouchableOpacity onPress={() => alert('settings')}>
+          <TouchableOpacity onPress={() => self.props.navigation.navigate('DrawerOpen')}>
             <Image style={{height: 38, width: 38}} source={require('../src/settings.png')}  />
           </TouchableOpacity>
           <Image
@@ -47,9 +49,6 @@ class HomeScreen extends Component {
       error: null
     }
     self = this;
-
-    this.starToggle = () => this.starToggle(item.date);
-    this.sharePhoto = () => this.sharePhoto(item.picture);
   }
 
   starToggle(day) {
@@ -190,10 +189,10 @@ class HomeScreen extends Component {
             <Text style={{color: 'black', backgroundColor:'transparent', fontSize: 25}} > {this.convertDate(item.date)} </Text> 
             <Image style={{width: width, height: width}} source={{uri: item.picture}} />
             <View style={{height: 40, flexDirection: 'row', paddingTop: 5, paddingHorizontal: 5, paddingBottom: 5}}>
-            <TouchableOpacity onPress={this.starToggle}>  
+            <TouchableOpacity onPress={() => this.starToggle(item.date)}>  
               {this.isStar(item.star)}
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.sharePhoto}>
+            <TouchableOpacity onPress={() => this.sharePhoto(item.picture)}>
               {this.renderShareButton()}
             </TouchableOpacity>
             </View>

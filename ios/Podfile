@@ -25,10 +25,11 @@ target 'OnePhoto' do
 
   pod 'GoogleMaps'  # Remove this line if you don't want to support Google Maps on iOS
   pod 'react-native-google-maps', path: rn_maps_path  # Remove this line if you don't want to support Google Maps on iOS
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
-
-  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+  pod 'RNShare', :path => '../node_modules/react-native-share'
 
 end
 

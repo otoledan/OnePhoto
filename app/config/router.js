@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, Image } from 'react-native';
-import { StackNavigator, TabNavigator } from 'react-navigation'; // 1.0.0-beta.14
+import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation'; // 1.0.0-beta.14
 
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import CameraScreen from '../screens/CameraScreen';
 import PreviewScreen from '../screens/PreviewScreen';
+import SideMenu from './SideMenu';
+
 
 const Tabs = TabNavigator({
 	Home: {
@@ -82,4 +84,15 @@ const Root = StackNavigator({
     }
   });  
 
-export default Root;
+  const DrawerNav = DrawerNavigator({
+    Root: {
+        screen: Root
+    },
+    contentComponent: SideMenu,
+}, {
+    drawerWidth: 300,
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle'
+  });
+export default DrawerNav;

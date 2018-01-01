@@ -5,6 +5,7 @@ import Realm from 'realm';
 
 import {PhotoSchema, AlbumSchema, UserPrefSchema} from '../config/data'
 
+
 console.disableYellowBox = true;
 
 let realm = new Realm({
@@ -42,10 +43,10 @@ class MapScreen extends Component {
           realm: null,
           showImage: false,
           image: null,
-          day: null
+          day: new Date()
         }
 
-        this.convertDate = this.convertDate(this.convertDate(this.state.day));
+        this.convertDate = this.convertDate(this.state.day);
         this.closePhoto = () => this.closePhoto();
     }
     
