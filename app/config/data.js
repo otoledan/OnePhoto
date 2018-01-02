@@ -21,5 +21,6 @@ export const UserPrefSchema = {
       name: 'UserPref',
       properties: {
           reminderTime:     'string',
+          overwrite:        'bool'
       }
 };
