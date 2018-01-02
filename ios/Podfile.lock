@@ -1,13 +1,7 @@
 PODS:
-  - GoogleMaps (2.5.0):
-    - GoogleMaps/Maps (= 2.5.0)
-  - GoogleMaps/Base (2.5.0)
-  - GoogleMaps/Maps (2.5.0):
-    - GoogleMaps/Base
   - React (0.51.0):
     - React/Core (= 0.51.0)
-  - react-native-google-maps (0.19.0):
-    - GoogleMaps (= 2.5.0)
+  - react-native-camera (0.12.0):
     - React
   - react-native-maps (0.19.0):
     - React
@@ -45,11 +39,13 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNFS (2.9.6)
+  - RNShare (1.0.23):
+    - React
   - yoga (0.51.0.React)
 
 DEPENDENCIES:
-  - GoogleMaps
-  - react-native-google-maps (from `../node_modules/react-native-maps`)
+  - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - React/BatchedBridge (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
@@ -63,25 +59,32 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNFS (from `../node_modules/react-native-fs`)
+  - RNShare (from `../node_modules/react-native-share`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 EXTERNAL SOURCES:
   React:
     :path: ../node_modules/react-native
-  react-native-google-maps:
-    :path: ../node_modules/react-native-maps
+  react-native-camera:
+    :path: ../node_modules/react-native-camera
   react-native-maps:
     :path: ../node_modules/react-native-maps
+  RNFS:
+    :path: ../node_modules/react-native-fs
+  RNShare:
+    :path: ../node_modules/react-native-share
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga/yoga.podspec
 
 SPEC CHECKSUMS:
-  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   React: 352f02f1db6e4744f9a758527e13e3fdefbbd6ba
-  react-native-google-maps: dc6d7644b0517e6e232644d2b66004714b91e152
+  react-native-camera: 03dd9770b7f9ab94d1dfb3dbc76a55749b6bddb8
   react-native-maps: d3b689927722398a12a4b3007fd9a0c60e1c48cd
+  RNFS: f262768239da6e81441369202807ab35dcf5eec2
+  RNShare: bab307be87ac2e9f475f7a18fd295c6c1640fe4d
   yoga: b5d96400ca8b2936965a7a6516da7c1177f432a3
 
-PODFILE CHECKSUM: b41c32efc514f8badecb739e74e6385872a61a08
+PODFILE CHECKSUM: d3aed0b91347505b1ae94bc97ea11fef14c2b345
 
 COCOAPODS: 1.3.1
