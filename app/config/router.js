@@ -88,8 +88,8 @@ const Root = StackNavigator({
     Root: {
         screen: Root
     },
-    contentComponent: SideMenu,
 }, {
+    contentComponent: SideMenu,
     drawerWidth: 300,
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
