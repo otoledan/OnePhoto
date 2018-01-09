@@ -7,6 +7,7 @@ import MapScreen from '../screens/MapScreen';
 import CameraScreen from '../screens/CameraScreen';
 import PreviewScreen from '../screens/PreviewScreen';
 import SideMenu from './SideMenu';
+import ImageHeader from './ImageHeader';
 
 
 const Tabs = TabNavigator({
@@ -15,7 +16,7 @@ const Tabs = TabNavigator({
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ tintColor, focused }) => (
                 <Image 
-                    style={{height: 22, width: 22, tintColor: tintColor}}
+                    style={[styles.icon, {tintColor: tintColor}]}
                     source={require('../src/home.png')}
                 />
             ),
@@ -26,7 +27,7 @@ const Tabs = TabNavigator({
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ tintColor, focused }) => (
                 <Image 
-                    style={{height: 27, width:27, tintColor: tintColor }}
+                    style={[styles.icon, {tintColor: tintColor}]}
                     source={require('../src/camera.png')}
                 />
             )
@@ -37,7 +38,7 @@ const Tabs = TabNavigator({
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ tintColor, focused }) => (
                 <Image 
-                    style={{height: 22, width: 22, tintColor: tintColor}}
+                    style={[styles.icon, {tintColor: tintColor}]}
                     source={require('../src/map.png')}
                 />
             )
@@ -81,6 +82,7 @@ const Root = StackNavigator({
     }
 },{
     navigationOptions: {
+        header: (props) => <ImageHeader {...props} />,
     }
   });  
 
@@ -95,4 +97,12 @@ const Root = StackNavigator({
     drawerCloseRoute: 'DrawerClose',
     drawerToggleRoute: 'DrawerToggle'
   });
+
+const styles = StyleSheet.create({
+    icon: {
+            height: 22, 
+            width: 22, 
+    }
+  });
+
 export default DrawerNav;

@@ -3,27 +3,7 @@ import PropTypes from 'prop-types'
 import { Platform, Dimensions, StyleSheet, TouchableOpacity, Image, View, Text, Vibration } from 'react-native';
 import Camera from 'react-native-camera';
 
-const ImageHeader = props => (
-  <View>
-      <View style={{
-          paddingTop: Platform.OS === 'ios' ? (Dimensions.get('screen').height == 812 ? 35 : 28) : 10,
-          paddingHorizontal: 15,
-          paddingBottom: 4,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          backgroundColor: '#fff'
-      }}>
-          <Image
-              style={{height: 40, width: 130}} source={require('../src/1Photo_Words.png')}
-          />
-      </View>
-  </View>
-);
-
 class CameraScreen extends Component {
-  static navigationOptions = ({ navigation, screenProps }) => ({
-    header: (props) => <ImageHeader {...props} />,
-  });
 
   constructor(props){
     super(props)

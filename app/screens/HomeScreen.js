@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform } from 'react-native';
+import { TouchableOpacity, View, Text, Image, FlatList, Dimensions, Platform, StyleSheet } from 'react-native';
 import Share from 'react-native-share';
 import Realm from 'realm';
 import { NavigationAction } from 'react-navigation'
-
 import {PhotoSchema, AlbumSchema, UserPrefSchema} from '../config/data'
-
-
+import WelcomeScreen from './WelcomeScreen';
 var RNFS = require('react-native-fs');
 
 
@@ -17,27 +15,6 @@ let realm = new Realm({
 
 var self = null;
 var {width} = Dimensions.get('window');
-
-var ImageHeader = props => (
-      <View style={{
-          paddingTop: Platform.OS === 'ios' ? (Dimensions.get('screen').height == 812 ? 35 : 28) : 10,
-          paddingHorizontal: 15,
-          paddingBottom: 4,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          backgroundColor: '#fff'
-      }}>
-          <TouchableOpacity onPress={() => self.props.navigation.navigate('DrawerOpen')}>
-            <Image style={{height: 38, width: 38}} source={require('../src/settings.png')}  />
-          </TouchableOpacity>
-          <Image
-              style={{height: 40, width: 130}} source={require('../src/1Photo_Words.png')}
-          />
-          <TouchableOpacity >
-              <Image style={{height: 38, width: 38}} source={require('../src/images.png')}  />
-          </TouchableOpacity>
-      </View>
-);
 
 class HomeScreen extends Component {
   constructor(props){
@@ -132,15 +109,15 @@ class HomeScreen extends Component {
 
   isStar(star) {
     if (star) {
-      return <Image style={{width: 31, height: 31, padding: 10}} source={require('../src/star.png')} />
+      return <Image style={styles.star} source={require('../src/star.png')} />
     }
 
     else {
-      return <Image style={{width: 31, height: 31, padding: 10}} source={require('../src/star_empty.png')} />
+      return <Image style={styles.star} source={require('../src/star_empty.png')} />
     }
   }
 
-  sharePhoto(url) {
+  sharePhoto(url, date) {
     RNFS.readFile(url, 'base64')
       .then((success) => {
       console.log('FILE Read!');
@@ -148,8 +125,8 @@ class HomeScreen extends Component {
       console.log(success);
       
       Share.open({
-        title: "React Native",
-        message: "Hola mundo",
+        title: "Check out this photo!",
+        message: date,
         url:  "data:image/png;base64,".concat(success),
         subject: "Share Link" //  for email
       });
@@ -164,35 +141,31 @@ class HomeScreen extends Component {
 
   renderShareButton() {
     if (Platform.OS == 'ios') {
-      return <Image style={{width: 30, height: 30, padding: 10}} source={require('../src/share-iphone.png')} />
+      return <Image style={styles.shareButton} source={require('../src/share-iphone.png')} />
     }
 
     else {
-      return <Image style={{width: 30, height: 30, padding: 10}} source={require('../src/share-android.png')} />
+      return <Image style={styles.shareButton} source={require('../src/share-android.png')} />
     }
   }
-  
-  
-  static navigationOptions = ({ navigation, screenProps }) => ({
-    header: (props) => <ImageHeader {...props} />,
-  });
   
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center'}}>
+        <WelcomeScreen pagekey={"uniquekey"} title={"categort title"} description={"topic description"}/>
         <FlatList
           keyExtractor={item => item.date}
           numColumns={1}
           data={this.state.realm.objects('Photo').sorted('date', true)}
           renderItem={({item}) =>
           <View>
-            <Text style={{color: 'black', backgroundColor:'transparent', fontSize: 25}} > {this.convertDate(item.date)} </Text> 
+            <Text style={styles.date}> {this.convertDate(item.date)} </Text> 
             <Image style={{width: width, height: width}} source={{uri: item.picture}} />
-            <View style={{height: 40, flexDirection: 'row', paddingTop: 5, paddingHorizontal: 5, paddingBottom: 5}}>
+            <View style={styles.bottomPane}>
             <TouchableOpacity onPress={() => this.starToggle(item.date)}>  
               {this.isStar(item.star)}
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.sharePhoto(item.picture)}>
+            <TouchableOpacity onPress={() => this.sharePhoto(item.picture, this.convertDate(item.date))}>
               {this.renderShareButton()}
             </TouchableOpacity>
             </View>
@@ -202,5 +175,30 @@ class HomeScreen extends Component {
       </View>
     )}
 }
+
+const styles = StyleSheet.create({
+  shareButton: {
+    width: 30, 
+    height: 30, 
+    padding: 10
+  },
+  star: {
+    width: 31, 
+    height: 31, 
+    padding: 10
+  },
+  date: {
+    color: 'black', 
+    backgroundColor:'transparent', 
+    fontSize: 25
+  },
+  bottomPane: {
+    height: 40, 
+    flexDirection: 'row', 
+    paddingTop: 5, 
+    paddingHorizontal: 5, 
+    paddingBottom: 5
+  }
+})
 
 export default HomeScreen;

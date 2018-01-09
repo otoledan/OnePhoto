@@ -12,30 +12,6 @@ let realm = new Realm({
   schema: [PhotoSchema, AlbumSchema, UserPrefSchema]
 })
 
-
-const ImageHeader = props => (
-  <View>
-      <View style={{
-          paddingTop: Platform.OS === 'ios' ? (Dimensions.get('screen').height == 812 ? 35 : 28) : 10,
-          paddingHorizontal: 15,
-          paddingBottom: 4,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          backgroundColor: '#fff'
-      }}>
-          <TouchableOpacity style={{zIndex: 3}}>
-            <Image style={{height: 38, width: 38}} source={require('../src/settings.png')}  />
-          </TouchableOpacity>
-          <Image
-              style={{height: 40, width: 130}} source={require('../src/1Photo_Words.png')}
-          />
-          <TouchableOpacity >
-              <Image style={{height: 38, width: 38}} source={require('../src/images.png')}  />
-          </TouchableOpacity>
-      </View>
-  </View>
-);
-
 class MapScreen extends Component {
     constructor(props){
         super(props)
@@ -49,10 +25,6 @@ class MapScreen extends Component {
         this.convertDate = this.convertDate(this.state.day);
         this.closePhoto = () => this.closePhoto();
     }
-    
-  static navigationOptions = ({ navigation, screenProps }) => ({
-    header: (props) => <ImageHeader {...props} />,
-  });
 
   componentWillMount() {
     this.setState({
